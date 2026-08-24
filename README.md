@@ -70,14 +70,71 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 ## Program
 
 ### Developed By:
-**Name:** ____________________________  
+**Name:** MARIMUTHU MATHAVAN
 
-### Register No:
-____________________________  
+### Register No: 212224230153
 
 ---
 
 ##  Output
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+img = cv2.imread('parrot.jpg',cv2.IMREAD_GRAYSCALE)
+plt.imshow(img, cmap='gray')
+plt.title('original_image')
+plt.show()
+```
+<img width="761" height="507" alt="image" src="https://github.com/user-attachments/assets/e988ad81-5246-49e2-a032-df915011a3a3" />
+
+```
+plt.hist(img.ravel(),256,range = [0, 256]);
+plt.title('Original Image')
+plt.show()
+```
+
+<img width="770" height="562" alt="image" src="https://github.com/user-attachments/assets/2a9fcc3c-f4f8-4969-96f8-4e01dc3dc7a6" />
+
+```
+img_eq = cv2.equalizeHist(img)
+plt.hist(img_eq.ravel(), 256, range = [0, 256]); 
+plt.title('Equalized Histogram')
+```
+<img width="837" height="627" alt="image" src="https://github.com/user-attachments/assets/8f6482dd-462b-4ed0-a8b8-072a8863a61f" />
+
+```
+plt.imshow(img_eq, cmap='gray')
+plt.title('original image')
+plt.show()
+
+```
+<img width="781" height="495" alt="image" src="https://github.com/user-attachments/assets/06bb8d76-6166-466f-864d-ef49a4de453e" />
+
+```
+img = cv2.imread('parrot.jpg', cv2.IMREAD_COLOR)
+img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+img_hsv[:,:,2] = cv2.equalizeHist(img_hsv[:, :, 2])
+img_eq = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+plt.subplot(121); plt.imshow(img[:, :, ::-1]); plt.title('Original Color Image')
+plt.subplot(122); plt.imshow(img_eq[:, :, ::-1]); plt.title('Equalized Image')
+
+```
+<img width="746" height="346" alt="image" src="https://github.com/user-attachments/assets/52760947-17c9-423a-9316-69d6f34879c0" />
+
+```
+plt.figure(figsize = [12,10])
+plt.subplot(221); plt.imshow(img[:, :, ::-1]); plt.title('Original Color Image')
+plt.subplot(222); plt.imshow(img_eq[:, :, ::-1]); plt.title('Equalized Image')
+plt.subplot(223); plt.hist(img.ravel(),256,range = [0, 256]); plt.title('Original Image')
+plt.subplot(224); plt.hist(img_eq.ravel(),256,range = [0, 256]); plt.title('Histogram Equalized')
+```
+
+<img width="881" height="791" alt="image" src="https://github.com/user-attachments/assets/9fa82cd4-d3ce-4a19-8920-d2ebbab0c817" />
+
+
+
+
 
 ### Grayscale Histogram Equalization
 
